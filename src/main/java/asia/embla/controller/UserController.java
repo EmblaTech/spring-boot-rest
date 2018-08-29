@@ -4,7 +4,6 @@ import asia.embla.common.Response;
 import asia.embla.model.dto.UserDTO;
 import asia.embla.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class UserController {
         return new Response(0, SUCCESS, user);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/", method = RequestMethod.PUT)
     public Response update(@RequestBody UserDTO userDTO){
         service.update(userDTO);
         return new Response(0, UPDATE_SUCCESS.replace("{1}", userDTO.getName()));

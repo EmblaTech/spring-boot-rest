@@ -79,7 +79,7 @@ An existing user can be deleted using following command
     
     {"code":0,"message":"User Robert has been deleted successfully"}
     
-### 5.List of users
+### 5. List of users
 Before we execute list of users, lets, add some more users using add command as shown above. Once you add users, execute below command to get list of users
 
     $ curl http://localhost:8090/users/

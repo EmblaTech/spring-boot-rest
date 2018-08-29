@@ -15,27 +15,22 @@ Once you install the necessary softwares you can clone this project very easily 
 ## Start
 You can start application using follwing commands
 
-    cd rest
+    cd spring-boot-rest
     mvn spring-boot:run
+    
+If application started without any issues, then you may notice a message as "Started Application in x seconds" in the console. 
     
 ## Test
 Now that the application is running, you can test it. You can use any REST client you wish. The following examples use the tool curl.
-### 1. List of users
-    $ curl http://localhost:8090/users/
-    
-You will receive an success status code, but with empty set of users as we haven't add any single user.
 
-    {"code":0,"message":"OK","data":[]}
-Hence we need to add users first
-
-### 2. Add user
+### 1. Add user
     $ curl -X POST --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "name": "Robin", "age": 15 }' 'http://localhost:8090/users/'
     
 This will create a new user called "Robin" and you should get a following response.
 
     {"code":0,"message":"User Robin has been created successfully"}
     
-#### 2.1 Invalid age
+#### 1.1 Invalid age
 If invalid data is entered then it will throw an error.
 
     $ curl -X POST --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "name": "Robin", "age": 150 }' 'http://localhost:8090/users/'
@@ -44,12 +39,14 @@ If invalid data is entered then it will throw an error.
 
     {"exception":"asia.embla.exception.InvalidDataException", "message":"The given age is not valid"}
     
-#### 2.2 Invalid name
-If name is not provided, different error message will be thrown. $ curl -X POST --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "name": "", "age": 100 }' 'http://localhost:8090/users/'
+#### 1.2 Invalid name
+If name is not provided, different error message will be thrown. 
+
+    $ curl -X POST --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "name": "", "age": 100 }' 'http://localhost:8090/users/'
 
     {"exception":"asia.embla.exception.InvalidDataException", "message":"Name is not provided"}
     
-### 3. Get user
+### 2. Get user
 You can get a user by giving user id as parameter 
     $ curl 'http://localhost:8090/users/1'
     
@@ -57,14 +54,14 @@ You will receive following error message.
 
     {"code":0,"message":"OK","data":{"id":1,"name":"Robin","age":15}}
     
-#### 3.1 Invalid id
+#### 2.1 Invalid id
 If you enter an invalid id, you will get an error message as below.
    
     $ curl 'http://localhost:8090/users/100' 
     
     {"exception":"asia.embla.exception.ItemNotFoundException","message":"The user does not exists"}
     
-### 4. Update user 
+### 3. Update user 
 In the same way a user can be updated  
 
     $ curl -X PUT --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "id" : 1, "name": "Robert", "age": 100 }' 'http://localhost:8090/users/'
@@ -75,9 +72,23 @@ If update does not contain any validation or any others, then user will get upda
     
 If a user does not exists you will receive an "The user does not exists" message.
 
-### 5. Delete user
+### 4. Delete user
 An existing user can be deleted using following command
 
     curl -X DELETE 'http://localhost:8090/users/1'
     
     {"code":0,"message":"User Robert has been deleted successfully"}
+    
+### 5.List of users
+Before we execute list of users, lets, add some more users using add command as shown above. Once you add users, execute below command to get list of users
+
+    $ curl http://localhost:8090/users/
+    
+You will receive an success status code, message and set of users as shown below.
+
+    {"code":0,"
+    message":"OK",
+    "data":[{"id":1,"name":"Robin","age":15},
+            {"id":2,"name":"Russel","age":25},
+            {"id":3,"name":"Richard","age":35}]
+            

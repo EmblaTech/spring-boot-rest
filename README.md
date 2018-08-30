@@ -86,9 +86,10 @@ Before we execute list of users, lets, add some more users using add command as 
     
 You will receive an success status code, message and set of users as shown below.
 
-    {"code":0,"
-    message":"OK",
-    "data":[{"id":1,"name":"Robin","age":15},
-            {"id":2,"name":"Russel","age":25},
-            {"id":3,"name":"Richard","age":35}]
+    { 
+      "code": 0,"
+      "message": "OK",
+      "data":  [{"id":1,"name":"Robin","age":15},
+                {"id":2,"name":"Russel","age":25},
+                {"id":3,"name":"Richard","age":35}]
             

@@ -4,7 +4,7 @@ This project provides a boilerplate code to start a REST service providing progr
 ## Set Up
 In order to run this program you need to have Java(1.7 or above) and Maven (2 or above) installed on your system. Hence set up your workplace by installing both. 
 
-If you want you can change the port and other settings such as database from "application.properties" file according to your preference. Currently it's using H2 in memory database. In case if you want some other databases, you simply add relavant driver of database dependency and change the url and other database properties in "application.properties" file.
+If you would like to alter the default settings, you can freely change the port and other settings such as database from "application.properties" file according to your preference. Currently it's using H2 in-memory database as peristent storage. In case if you want some other databases, you simply add relavant driver of database dependency in pom.xml and change the url and other database properties in "application.properties" file.
 
 ## Clone
 Once you install the necessary softwares you can clone this project very easily using the following command.
@@ -21,7 +21,7 @@ You can start application using follwing commands
 If application started without any issues, then you may notice a message as "Started Application in x seconds" in the console. 
     
 ## Test
-Now that the application is running, you can test it. You can use any REST client you wish. The following examples use the tool curl.
+Application is up and running now and you can start testing. You can use any REST client you wish. The following examples use the "curl" tool.
 
 ### 1. Add user
     $ curl -X POST --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "name": "Robin", "age": 15 }' 'http://localhost:8090/users/'
@@ -62,11 +62,11 @@ If you enter an invalid id, you will get an error message as below.
     {"exception":"asia.embla.exception.ItemNotFoundException","message":"The user does not exists"}
     
 ### 3. Update user 
-In the same way a user can be updated  
+An already existing user's information can be updated  using below command.
 
     $ curl -X PUT --header "Content-Type:application/json" --header 'Accept: application/json' -d '{ "id" : 1, "name": "Robert", "age": 100 }' 'http://localhost:8090/users/'
     
-If update does not contain any validation or any others, then user will get updated and you will get following message.
+If update command does not contain any validation or any other errors, then user details will get updated and you will get following message.
 
     {"code":0,"message":"User Robert has been updated successfully"}
     

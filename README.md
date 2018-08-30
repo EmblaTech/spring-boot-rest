@@ -2,9 +2,9 @@
 This project provides a boilerplate code to start a REST service providing program in couple of seconds.
 
 ## Set Up
-In order to run this program you need to have Java(1.7 or above) and Maven (2 or above) installed on your system. Hence set up your workplace by installing both.    
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
+In order to run this program you need to have Java(1.7 or above) and Maven (2 or above) installed on your system. Hence set up your workplace by installing both. 
+
+If you want you can change the port and other settings such as database from "application.properties" file according to your preference. Currently it's using H2 in memory database. In case if you want some other databases, you simply add relavant driver of database dependency and change the url and other database properties in "application.properties" file.
 
 ## Clone
 Once you install the necessary softwares you can clone this project very easily using the following command.
